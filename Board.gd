@@ -12,10 +12,12 @@ func populateGrid():
 	print(sizes)
 	#minSize = min(sizes[0]-2*xMargin, sizes[1]-2*yMargin)/boardSize
 	minSize = 128
+	var xOffset = 3/4 * minSize
+	var yOffset = sqrt(3)/4 * minSize
 	for i in range(0,boardSize):
 		var row = []
 		for j in range(0,boardSize):
-			row.append([xMargin+hexConvert*minSize*i,yMargin+hexConvert*minSize*j])
+			row.append([xMargin+xOffset*i,yMargin+yOffset*j])
 		grid.append(row)
 
 
