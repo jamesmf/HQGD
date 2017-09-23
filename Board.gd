@@ -11,13 +11,15 @@ func populateGrid():
 	var sizes = get_size()
 	print(sizes)
 	#minSize = min(sizes[0]-2*xMargin, sizes[1]-2*yMargin)/boardSize
-	minSize = 128
-	var xOffset = 3/4 * minSize
-	var yOffset = sqrt(3)/4 * minSize
+	minSize = 96
+	var yOffset = sqrt(3)/2.0 * minSize
 	for i in range(0,boardSize):
 		var row = []
+		var rowOffset = 0
+		if i  % 2 != 0:
+			rowOffset = minSize/2.0
 		for j in range(0,boardSize):
-			row.append([xMargin+xOffset*i,yMargin+yOffset*j])
+			row.append([rowOffset+xMargin+minSize*j,yMargin+yOffset*i])
 		grid.append(row)
 
 
@@ -32,3 +34,21 @@ func _ready():
 	var y = grid[0][0][1]
 	hex._place(x, y, minSize)
 	add_child(hex)
+	
+	var hex2 = hexScene.instance()
+	x = grid[0][1][0]
+	y = grid[0][1][1]
+	hex2._place(x, y, minSize)
+	add_child(hex2)
+
+	var hex3 = hexScene.instance()
+	x = grid[1][1][0]
+	y = grid[1][1][1]
+	hex3._place(x, y, minSize)
+	add_child(hex3)
+	
+	var hex4 = hexScene.instance()
+	x = grid[2][2][0]
+	y = grid[2][2][1]
+	hex4._place(x, y, minSize)
+	add_child(hex4)
